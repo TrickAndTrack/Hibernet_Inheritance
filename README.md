@@ -87,17 +87,71 @@ As an object rellational mapping ORM framework, hibernate is connected with data
 * Add all requred Hibernate JARs
 * Download mysqlconnector.jar from:
 * Downlaod link for ojdbc14.jar for oracle 11g:
-|||
-|----|----|
-|![image](https://github.com/TrickAndTrack/Hibernet_Inheritance/assets/73180409/d51aae87-192a-4e15-9921-cbb10d5fdd39)|![image]https://github.com/TrickAndTrack/Hibernet_Inheritance/assets/73180409/c45b6b3e-cdb9-4f9a-b2f7-f3b5e3b832ae)|
+  
+|1st step | 2nd step    ↩|
+|-------------|-------------|
+|![image](https://github.com/TrickAndTrack/Hibernet_Inheritance/assets/73180409/d51aae87-192a-4e15-9921-cbb10d5fdd39)|![image](https://github.com/TrickAndTrack/Hibernet_Inheritance/assets/73180409/1b7c921c-05ca-4224-bcb9-9968338a0293)|
 |![image](https://github.com/TrickAndTrack/Hibernet_Inheritance/assets/73180409/67c6e73d-c0f5-43ba-88e5-1107482c5137)|![image](https://github.com/TrickAndTrack/Hibernet_Inheritance/assets/73180409/5d96a04f-441e-4cdd-904d-e1bca9ff01ba)|
 |![image](https://github.com/TrickAndTrack/Hibernet_Inheritance/assets/73180409/3500c6cf-91f6-46f5-b099-58291ebd23d5)|![image](https://github.com/TrickAndTrack/Hibernet_Inheritance/assets/73180409/9212efae-b19b-4a14-a9e1-671eacf2e5ad)|
 
 # Hibernate Annotations
 Hibernate annotation is the newest way to define mappings wihtout the use of XML file. you can use annotation in addition to or as a replacment of XML mapping metadata.
+* `@Entity`: Specifies that the class is an entity. This annotation is placed on the class name.
+* `@Id`: Specifies the primary key of the entity. In this case, id is the primary key.
+* `@GeneratedValue`: Indicates that the primary key should be automatically generated. Here, it's set to GenerationType.IDENTITY, which means an auto-incremented column in the database.
+* `@Table(name = "student")`: Specifies the name of the database table to which the entity will be mapped.
+
+ ```
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Student")
+public class Student {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "username", nullable = false, length = 50)
+    private String username;
+
+    @Column(name = "email", nullable = false, unique = true)
+    private String email;
+
+    // Constructors, getters, and setters
+
+    // Getters and setters
+    // Generated getters and setters for id, username, and email
+}
+```
+>  Use POJO class Student, hibernate.cfg.xml and annontaions instead of hibernate mapping file.
+* Configuration.config
+  ![image](https://github.com/TrickAndTrack/Hibernet_Inheritance/assets/73180409/713ab9ee-d929-4f52-8e9a-a795e6be81d2)
+# CURD Operation
+* The acronym CRUD stands Create, Read, Update and Delete
+* They are four basic operations that any data-driven application perfroms often
+* Hibernate also supports CURD operation by means of Session interface.
+ ## Limitation of using session method
+ * Multiple persistent objects can't be expressed to perform some complex CRUD operation.
+ * Multiple delet and update operations are not possible
+ * Required criteria can't be expressed to perform some complex CRUD operation.
+   ## To overcome the above limitaions the following are used:
+   * HQL
+     * it gives query language provide by hibernate,
+     * it is same as SQL but it doesnt depend on the table of the database, it uses classes.
+   * Criteria API
+     * It is one way of querying the DB in the hibernate application
+     * It can be used for DML (Database Manipulation Language) operations
+     * Criteria API is an object oriented after native for HQL to read data from database
+     * Criteria API supports compile time checking for the query that we build, unlike HQL
+   * Native SQL
+     
 
 
-
- 
  
 
