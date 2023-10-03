@@ -146,6 +146,9 @@ public class Student {
      * Criteria API is an object oriented after native for HQL to read data from database
      * Criteria API supports compile time checking for the query that we build, unlike HQL
    * Native SQL
+      * createSQLQuery() method is used to create native SQL query for the session.
+      * You can create SQL, including stored procedure, for all create, update, delete operations using Hibernate 3.x.
+      * The resukt can be added to hibernate entity.
 # Agenda
 * HQL  (Hibenrate Queries & Relationships)
   * Why HQL?
@@ -174,6 +177,83 @@ public class Student {
  |It is realted to hibenrtae framework|It is realted to specific database|
  |HQL queries are object Queries| SQL Queries are table queries|
  |HQL QUery:- from student, where Student is one class name| SQL Query:- Select*from Student, Where Student is one table name|
-## Features of HQL
+ ## Features of HQL
+  * HQL is object-oriented
+  * It understands notions like iheritance, polymorphism, and association
+  * its queries are case-insensitive, unlike queries in java classes.
+  Example: For HQL queries, SELECT is the same as select
+  but for Java class org.hibernate.eg.STUDENT is not org.hibernate.eg.Student.
+ ## Uses of HQL
+  * using HQL, we can create required CRUD operations:
+    * UPDATE
+    * DELETE
+    * SELECT
+ ## Creating HQL Query
+ 1) Create configuration object and hibernate.cfg.xml file
+```
+    StandardServiceRegistry standardRegistry = new StandardServiceRegistryBuilder().configure("Hibernate.cfg.xml").build();
+```
+ 2) Create StandardServiceRegistry object
+```
+  Metadata metaData = new MetadataSources(standardRegistry).getMetadataBuilder().build();
+ StandardServiceRegistry sf = metaData.getSessionFactoryBuilder().build();
+```
+ 3) Open session
+```
+ Session sn = sf.openSession();
+```
+ 4) Create Query
+```
+ Query query = sn.createQuery("Here you can write HQL Query");
+```
+ ## Methods of Query Interface
+  1) getReturnType() - Return the Hibernate types of the query result set.
+  2) iterate() - Return the query results as an Iterator
+  3) list() - Return the query results as a list
+ ## Hibernate Parameter Building
+ ## HQL Syntax
+  * from clause
+  * Aliasing
+  * AGGREGATE FUNCTIONS AND SELECT clause
+  * where clause
+  * Expressions
+  * order by clause
+  * Asssociations and Joins
+# Native SQL Query and Criteria Query
+ * What is criteria Query?
+ * Restriction Class
+ * Criteria Query: Example
+ * Applying Criteria QUERY
 
+# Caching in Hibernate
+ * Cache is a component that stores data temporarily so future requests for that data can be served faster
+ * Cache is a temporary storage area
+ * Caching is a process to store data in cache
+ * Caching in hibernate avoids database hits and increases performace of critical applications.
 
+|||
+|----|----|
+|![image](https://github.com/TrickAndTrack/Hibernet_Inheritance/assets/73180409/05916c70-f214-403a-81ce-940e3a5b13be)| ![image](https://github.com/TrickAndTrack/Hibernet_Inheritance/assets/73180409/8a5689f5-889e-4e22-853a-4472713b94bc)|
+
+# Types of Mapping in Hibernate
+ 1) Inheritnace Mapping
+ 2) Association Mapping
+  * One ot One
+  * One to Many
+  * Many to One
+  * Many to Many  
+ 3) Collection Mapping
+    * List
+    * Set
+    * SortedSet
+    * Map
+    * SortedMap
+    * Collection
+ 4) Component Mapping
+
+# Transaction Management
+ * A transaction simply represents a unit of work if one step fails, the whole transaction fails
+ * it described by ACID properties(Automicity, Consistency, Isolaion, and Durability)
+![image](https://github.com/TrickAndTrack/Hibernet_Inheritance/assets/73180409/078c7f1c-46f4-4d60-9374-1b886309924d)
+
+ 
