@@ -16,10 +16,6 @@ In this we create the curd operation of one-to-one, one-to-many, many-to-many.
 * Hibernate Project
 * Hibernate Annotations
 * Hibernate CURD Operations
-* HQL
-* Native SQL Query and Criteria Query
-* Caching in Hibernate
-* Transaction Management
 
 # Introduction
 * Hibernate is a framwework that simplifies the developemnt of java application to interact with the database.
@@ -150,8 +146,34 @@ public class Student {
      * Criteria API is an object oriented after native for HQL to read data from database
      * Criteria API supports compile time checking for the query that we build, unlike HQL
    * Native SQL
-     
+# Agenda
+* HQL  (Hibenrate Queries & Relationships)
+  * Why HQL?
+  * What is HQL?
+  * HQL vsSQL
+  * Features of HQL
+  * Uses of HQL
+  * Creating HQL Query
+  * Methods of Query Interface
+  * Hibernate Parameter Building
+  * HQL Syntax
+* Native SQL Query and Criteria Query
+* Caching in Hibernate
+* Transaction Management
+# HQL
+ ## Why HQL?
+  * To retrieve the data, we provide primary key value for tha student: user.get(Person.class;1);
+  * If one table doesn't have a primary key, the records cannot be retrieved.
+  * Hibernate provide its own language known as Hibernate QUery Language, to solve such probleams, The Syntax is quite similar to database SQL language.
+ ## What is HQL?
+  * HQL is used to communicate with a database.
+  * It is Hibernate Language for relational databse Management Systems. HQL statements are used to perform tasks such as updating data on a database or retriveing data from a database.
+ ## HQL vsSQL
+ |HQL  | SQL|
+ |-----|-----|
+ |It is realted to hibenrtae framework|It is realted to specific database|
+ |HQL queries are object Queries| SQL Queries are table queries|
+ |HQL QUery:- from student, where Student is one class name| SQL Query:- Select*from Student, Where Student is one table name|
+## Features of HQL
 
-
- 
 
